@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { IChildren } from "../interfaces";
 
 const StyledContainer = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;
 `
-const Container = ({ children }:{children:React.ReactNode}) => {
+const Container = ({ children }:IChildren) => {
     return <StyledContainer>
         {children}
     </StyledContainer>
