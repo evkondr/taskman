@@ -1,24 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const StyledNav = styled.nav`
     display: flex;
     font-size: 1.5rem;
     color: #fff;
     a{
+        border: 1px solid #fff;
+        border-radius: 3px;
         padding: 10px;
-        box-shadow: 0px 0px 2px rgba(0,0,0, 0.7);
         margin-right: 10px;
+        box-shadow: 0 0 10px rgba(255,255,255, 0);
+        transition: all .1s ease-in-out;
+        :hover{
+            box-shadow: 0 0 10px rgba(255,255,255, .5);
+        }
     }
 `
 
 const Navigation = () => {
     return <StyledNav>
-        <Link to="/">Главная</Link>
-        <Link to="profile">Профиль</Link>
-        <Link to="users">Пользователи</Link>
-        <Link to="users">Мои задачи</Link>
+        <NavLink to="/">Главная</NavLink>
+        <NavLink to="profile">Профиль</NavLink>
+        <NavLink to="users">Пользователи</NavLink>
+        <NavLink to="tasks">Мои задачи</NavLink>
     </StyledNav>
 }
 export default Navigation
