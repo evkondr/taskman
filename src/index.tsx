@@ -10,10 +10,23 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+  ul{
+    list-style-type: none;
+  }
   html,
   body {
     width: 100vw;
     height: 100vh;
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `
 
