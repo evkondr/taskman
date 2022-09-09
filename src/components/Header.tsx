@@ -4,6 +4,7 @@ import { IChildren } from "../interfaces";
 import Container from "./Container";
 
 const StyledHeader = styled.header`
+    position: absolute;
     width: 100%;
     background-color: #3ea5ff;
     padding: 10px;
@@ -11,7 +12,7 @@ const StyledHeader = styled.header`
 
 const Header = ({ children }:IChildren) => {
     return <StyledHeader>
-        <Container>
+        <Container centered>
             {children}
         </Container>
     </StyledHeader> 

@@ -19,12 +19,14 @@ const GlobalStyle = createGlobalStyle`
   }
   html,
   body {
-    width: 100vw;
-    height: 100vh;
     font-size: 10px;
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  #root{
+    width: 100vw;
+    height: 100vh;
   }
 `
 
