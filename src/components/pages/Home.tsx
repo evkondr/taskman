@@ -36,7 +36,7 @@ const Home = () => {
         <h2>SPA приложени к итоговому заданию на стажировку Lad.</h2>
         <p>- Стек -</p>
         <ul>
-            {steck.map(item => <li>- {item}</li>)}
+            {steck.map((item, index) => <li key={index}>- {item}</li>)}
         </ul>  
     </StyledAbout>
 }
