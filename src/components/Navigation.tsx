@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../hooks/reduxHooks";
 
 const StyledNav = styled.nav`
     display: flex;
@@ -20,11 +21,15 @@ const StyledNav = styled.nav`
 `
 
 const Navigation = () => {
+    const { isAuth } = useAppSelector(state => state.isAuth)
     return <StyledNav>
-        <NavLink to="/">Главная</NavLink>
-        <NavLink to="profile">Профиль</NavLink>
-        <NavLink to="users">Пользователи</NavLink>
-        <NavLink to="tasks">Мои задачи</NavLink>
+        {isAuth && <>
+            <NavLink to="/">Главная</NavLink>
+            <NavLink to="users">Пользователи</NavLink>
+            <NavLink to="profile">Профиль</NavLink>
+            <NavLink to="users">Пользователи</NavLink>
+            <NavLink to="tasks">Мои задачи</NavLink>
+        </>}
     </StyledNav>
 }
 export default Navigation

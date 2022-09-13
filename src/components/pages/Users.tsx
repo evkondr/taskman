@@ -18,12 +18,9 @@ const Users = () => {
     useEffect(()=>{
         dispatch(fetchUsers())
     }, [dispatch])
-    return<>
-        <StyledPage>
-            {error && <p>error</p>}
-            {isLoading?<Preloader />:users.map(user=> <NavLink to={`${user.id}`}><UserItem user={user} /></NavLink>)}
-        </StyledPage>
-    </> 
-    
+    return <StyledPage>
+        {error && <p>error</p>}
+        {isLoading?<Preloader />:users.map(user=> <NavLink to={`${user.id}`}><UserItem user={user} /></NavLink>)}
+    </StyledPage>
 }
 export default Users;

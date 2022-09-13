@@ -12,7 +12,7 @@ interface IState {
 const initialState:IState = {
     users: [],
     isLoading: false,
-    error: null
+    error: null,
 }
 
 export const usersSlice = createSlice({
