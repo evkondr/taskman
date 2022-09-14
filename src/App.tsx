@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import Container from "./components/Container";
 import Logo from "./components/Logo";
-import logourl from "./TASKMAN.png";
+import logourl from "./imgaes/TASKMAN.png";
 import Home from "./components/pages/Home";
 import Profile from "./components/pages/Profile";
 import Users from "./components/pages/Users";
@@ -33,6 +33,7 @@ const StyledLogout = styled.button`
   color: #fff;
   border: none;
   background: none;
+  cursor: pointer;
 `
 function App() {
   const {isAuth} = useAppSelector(state => state.isAuth)
@@ -45,9 +46,8 @@ function App() {
   }
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("userID") as string)
-    console.log(data)
     if(data){
-        dispatch(login())
+        dispatch(login(data))
     }else{
       navigate("/Authorization");
     }

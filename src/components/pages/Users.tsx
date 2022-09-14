@@ -20,7 +20,7 @@ const Users = () => {
     }, [dispatch])
     return <StyledPage>
         {error && <p>error</p>}
-        {isLoading?<Preloader />:users.map(user=> <NavLink to={`${user.id}`}><UserItem user={user} /></NavLink>)}
+        {isLoading?<Preloader />:users.map(user=> <NavLink key={user.id} to={`${user.id}`}><UserItem key={user.id} user={user} /></NavLink>)}
     </StyledPage>
 }
 export default Users;

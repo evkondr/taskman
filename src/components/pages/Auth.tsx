@@ -47,7 +47,7 @@ const Auth = () => {
     const clickHandler = () => {
         if(selectedUser){
             localStorage.setItem("userID", selectedUser)
-            dispatch(login())
+            dispatch(login(selectedUser))
             navigate("/");
         }
     }
@@ -60,7 +60,7 @@ const Auth = () => {
             <form>
                 <select value={selectedUser} onChange={onChangeHandler}>
                     <option value={undefined}>Выбрать пользователя</option>
-                    {users.map(user => <option value={user.id}>{user.name}</option>)}
+                    {users.map(user => <option key={user.id} value={user.id}>{user.name}</option>)}
                 </select>
                 <Button success clickHandler={clickHandler}>Войти</Button>
             </form>

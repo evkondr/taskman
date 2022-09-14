@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IUser } from "../interfaces";
+import avatar from "../imgaes/Avatar.jpg"
 interface IUserItem{
     user:IUser
 }
@@ -10,7 +11,7 @@ const StyledItem = styled.div`
     justify-content: flex-start;
     width: 150px;
     height: 230px;
-    font-size: 1.5rem;;
+    font-size: 1.5rem;
     border: 1px solid #3f3f3f;
     box-shadow: 1px 1px 5px rgba(0,0,0, .5);
     padding: 10px;
@@ -27,6 +28,8 @@ const StyledAvatar = styled.div`
     width: 100%;
     height: 150px;
     background-color: #3f3f3f;
+    background: url(${avatar}) center no-repeat;
+    background-size: cover;
     margin-bottom: 10px;
 `
 const UserItem = (props:IUserItem) => {

@@ -8,5 +8,9 @@ class userService{
         const result = instance.get("/");
         return result;
     }
+    static async getUserById(id:string){
+        const result = instance.get(`/${id}`);
+        return result;
+    }
 }
 export default userService
