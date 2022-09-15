@@ -1,6 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from "./index";
-
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from "@reduxjs/toolkit"
 interface IAuthState{
     isAuth: boolean,
     userID: string | undefined

@@ -1,9 +1,7 @@
 import React, {useEffect} from "react";
-import styled from "styled-components";
 import { fetchUserById } from "../../Store/asyncActions";
 import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
 import UserProfile from "../UserProfile";
-import { IUser } from "../../interfaces";
 
 const Profile = () => {
     const dispatch = useAppDispatch()

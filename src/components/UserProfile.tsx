@@ -24,7 +24,7 @@ interface IUserProfileProps{
     currentUser: IUser | null
 }
 const UserProfile = ({currentUser}:IUserProfileProps) => {
-    //#TODO: Доделать Стили
+    //#TODO: Do complete styles for this item
     return <StyledWrap>
         <AvatarSide>
             <AvatarWrap>

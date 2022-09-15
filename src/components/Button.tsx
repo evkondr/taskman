@@ -4,7 +4,8 @@ import styled, { css } from "styled-components";
 interface IButton {
     children: React.ReactNode,
     clickHandler?: (e:React.MouseEvent<HTMLButtonElement>) => void;
-    success?: boolean
+    success?: boolean,
+    danger?: boolean
 }
 const StyledButton = styled.button<IButton>`
     font-size: 1.3rem;
@@ -15,6 +16,11 @@ const StyledButton = styled.button<IButton>`
     ${props => props.success && css`
         background-color: #00c271;
         border-color: #00c271;;
+        color: #fff;
+    `}
+    ${props => props.danger && css`
+        background-color: #e90000;
+        border-color: #e90000;
         color: #fff;
     `}
 `

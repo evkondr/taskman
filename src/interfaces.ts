@@ -3,6 +3,12 @@ import React from "react"
 export interface IChildren { 
     children: React.ReactNode
 }
+export interface ITodo{
+    userId: number,
+    id: number,
+    title: string,
+    completed: boolean
+}
 
 export interface IUser {
     id: number

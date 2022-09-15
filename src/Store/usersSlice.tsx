@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "./index";
 import { IUser } from '../interfaces';
 import userService from '../services/userService';
