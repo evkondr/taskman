@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ITodo } from "../interfaces";
 import { fetchTodosByUserId } from "./asyncActions";
-
+import { isError } from "../utils";
 
 interface IState{
     todos: ITodo[];
@@ -28,9 +28,9 @@ const todoSlice = createSlice({
             state.todos = action.payload
             state.isLoading = false
         });
-        builder.addCase(fetchTodosByUserId.rejected, (state, action) => {
+        builder.addMatcher(isError, (state, action:PayloadAction<string>)=>{
             state.error = action.payload
-        });
+        })
     }
 })
 export default todoSlice.reducer

@@ -1,10 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import type { PayloadAction } from "@reduxjs/toolkit"
-import type { RootState } from "./index";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from '../interfaces';
-import userService from '../services/userService';
 import { fetchUsers, fetchUserById } from './asyncActions';
-
+import { isError } from '../utils';
 interface IState {
     users:IUser[],
     currentUser:IUser | null,
@@ -30,9 +28,6 @@ export const usersSlice = createSlice({
             state.users = action.payload
             state.isLoading = false
         });
-        builder.addCase(fetchUsers.rejected, (state, action) => {
-            state.error = action.payload
-        });
         builder.addCase(fetchUserById.pending, (state) => {
             state.isLoading = true
         });
@@ -40,9 +35,9 @@ export const usersSlice = createSlice({
             state.currentUser = action.payload
             state.isLoading = false
         });
-        builder.addCase(fetchUserById.rejected, (state, action) => {
+        builder.addMatcher(isError, (state, action:PayloadAction<string>)=>{
             state.error = action.payload
-        });
+        })
     }
   })
   export default usersSlice.reducer

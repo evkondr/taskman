@@ -9,9 +9,11 @@ interface ITodoProps{
 const StyledItem = styled.div`
     display: flex;
     align-items: center;
-    width: 80%;
+    max-width: 500px;
+    font-size: 1.5rem;
     border: 1px solid gray;
     padding: 10px;
+    margin: 0 auto;
     margin-bottom: 10px;
 `
 const CheckBox = styled.div`
