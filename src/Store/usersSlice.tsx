@@ -37,6 +37,7 @@ export const usersSlice = createSlice({
         });
         builder.addMatcher(isError, (state, action:PayloadAction<string>)=>{
             state.error = action.payload
+            state.isLoading = false
         })
     }
   })
