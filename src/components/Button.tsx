@@ -10,9 +10,14 @@ interface IButton {
 const StyledButton = styled.button<IButton>`
     font-size: 1.3rem;
     border: 1px solid grey;
+    border-radius: 5px;
     padding: 15px;
     line-height: 0;
     cursor: pointer;
+    margin-right: 5px;
+    &:last-child{
+        margin-right: 0;
+    }
     ${props => props.success && css`
         background-color: #00c271;
         border-color: #00c271;;
