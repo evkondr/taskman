@@ -3,6 +3,8 @@ import styled from "styled-components"
 import Button from "./Button"
 import { ITodo } from "../interfaces";
 import Checkbox from "./Checkbox"
+import { useAppDispatch } from "../hooks/reduxHooks";
+import { deleteTodo } from "../Store/asyncActions";
 
 interface ITodoProps{
     todo: ITodo
@@ -10,7 +12,7 @@ interface ITodoProps{
 const StyledItem = styled.div`
     display: flex;
     align-items: center;
-    max-width: 700px;
+    width: 700px;
     font-size: 1.5rem;
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgba(0,0,0, .5);
@@ -18,6 +20,7 @@ const StyledItem = styled.div`
     margin: 0 auto;
     margin-bottom: 20px;
     transition: all .2s ease-in-out;
+    will-change: transform;
     &:hover{
         transform: scale(105%);
     }
@@ -37,6 +40,12 @@ const ControlField = styled.div`
 `
 const TodoItem = (props:ITodoProps) => {
     const {todo} = props;
+    const dispatch = useAppDispatch()
+    const deleteItem = (id:number) => {
+        console.log(id)
+        dispatch(deleteTodo(id))
+    }
+    
     return <StyledItem>
         <CheckboxBlock>
             <Checkbox completed={todo.completed}/>
@@ -45,7 +54,7 @@ const TodoItem = (props:ITodoProps) => {
             {todo.completed ? <TextDone>{todo.title}</TextDone> : todo.title}
         </TextField>
         <ControlField>
-            <Button danger >Удалить</Button>
+            <Button danger clickHandler={() => deleteItem(todo.id) }>Удалить</Button>
             <Button success >Редактировать</Button>
         </ControlField>
     </StyledItem>

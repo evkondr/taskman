@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 import { ITodo, IUser } from "../interfaces";
 import todosService from "../services/todosSetvice";
 import userService from "../services/userService";
+import { removeTodo } from "./todoSlice";
 //USERS ACTIONS
 export const fetchUsers = createAsyncThunk<IUser[]>("users/fetch", async(_, {rejectWithValue}) => {
     try {
@@ -39,6 +40,18 @@ export const fetchTodosByUserId = createAsyncThunk<ITodo[], string>("todos/fetch
     } catch (error) {
         if(axios.isAxiosError(error)){
             console.log(error)
+            return rejectWithValue(error.message);
+        }else{
+            return rejectWithValue(error)
+        }
+    }
+})
+export const deleteTodo = createAsyncThunk<void, number>("todos/deleteTodo", async(id, {rejectWithValue, dispatch}) => {
+    try {
+        const response = await todosService.deleteTodo(id)
+        dispatch(removeTodo(id))
+    } catch (error) {
+        if(axios.isAxiosError(error)){
             return rejectWithValue(error.message);
         }else{
             return rejectWithValue(error)

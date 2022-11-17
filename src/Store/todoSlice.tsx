@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ITodo } from "../interfaces";
-import { fetchTodosByUserId } from "./asyncActions";
+import { fetchTodosByUserId, deleteTodo } from "./asyncActions";
 import { isError } from "../utils";
 
 interface IState{
@@ -19,7 +19,11 @@ const initialState:IState = {
 const todoSlice = createSlice({
     name: "todos",
     initialState,
-    reducers: {},
+    reducers: {
+        removeTodo: (state, action) => {
+            state.todos = state.todos.filter( item => item.id !== action.payload)
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchTodosByUserId.pending, (state) => {
             state.isLoading = true
@@ -28,10 +32,14 @@ const todoSlice = createSlice({
             state.todos = action.payload
             state.isLoading = false
         });
+        builder.addCase(deleteTodo.fulfilled, (state, action:PayloadAction<any>) => {
+            
+        })
         builder.addMatcher(isError, (state, action:PayloadAction<string>)=>{
             state.error = action.payload
             state.isLoading = false
         })
     }
 })
-export default todoSlice.reducer
+export const {removeTodo} = todoSlice.actions;
+export default todoSlice.reducer;

@@ -16,5 +16,9 @@ class todosService{
         })
         return result
     }
+    static async deleteTodo(id:number){
+        const result = instance.delete(`/${id}`)
+        return result
+    }
 }
 export default todosService
