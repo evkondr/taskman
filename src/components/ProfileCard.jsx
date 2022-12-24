@@ -3,6 +3,7 @@ import { AiOutlineMail, AiOutlineGlobal } from "react-icons/ai"
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useAppSelector } from '../hooks/reduxHooks';
+import Avatar from './Avatar';
 
 const ProfileBlock = styled.article`
     position: relative;
@@ -63,7 +64,7 @@ const ProfileCard = () => {
         <NavLink to="/profile">
             <BsGear style={{position: "absolute", left: "20px", transform: "scale(200%)", color: "#00b9c2"}} />
         </NavLink>
-        <ProfileAvatar></ProfileAvatar>
+        <Avatar />
         <ProfileName>User Name</ProfileName>
         <ProfileInfo>
             <p><AiOutlineMail style={{"marginRight": "5px", "verticalAlign":"middle", transform: "scale(130%)"}}/>Sincere@april.biz</p>
