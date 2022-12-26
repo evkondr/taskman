@@ -16,13 +16,6 @@ const ProfileBlock = styled.article`
     border-radius: 5px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 `
-const ProfileAvatar = styled.div`
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #00b9c2;
-    margin-bottom: 1rem;
-`
 const ProfileName = styled.p`
     width: 100%;
     font-size: 2rem;

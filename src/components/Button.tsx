@@ -11,6 +11,7 @@ const StyledButton = styled.button<IButton>`
     font-size: 1.3rem;
     border: 1px solid grey;
     border-radius: 5px;
+    background: transparent;
     padding: 15px;
     line-height: 0;
     cursor: pointer;

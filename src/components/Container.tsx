@@ -8,7 +8,7 @@ interface ICenter extends IChildren{
 //STYLES
 const StyledContainer = styled.div`
     display: flex;
-    align-items: ${(props:ICenter) => props.centered?"center":"flex-start"};
+    align-items: ${(props:ICenter) => props.centered ? "center" : "flex-start"};
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;

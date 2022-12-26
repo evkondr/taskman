@@ -1,40 +1,42 @@
-import React from "react";
 import styled from "styled-components";
 import { IUser } from "../interfaces";
 import Avatar from "./Avatar";
-
-const StyledWrap = styled.div`
-    display: flex;
-    height: 100%;
-    box-shadow: 1px 1px 3px rgba(0,0,0, .7);
-`
-const AvatarSide = styled.aside`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-`
-const AvatarWrap = styled.div`
-    width: 150px;
-`
-const InfoSide = styled.aside`
-    display: flex;
+import Button from "./Button";
+const Wrapper = styled.section`
+    display: grid;
+    grid-template-columns: 1fr, 2fr;
+    .profile-side{
+        display: flex;
+        width: 300px;
+        .profile-side__avatar{
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            align-items: center;
+        }
+    }
+    .profile-info{
+        
+    }
 `
 interface IUserProfileProps{
     currentUser: IUser | null
 }
 const UserProfile = ({currentUser}:IUserProfileProps) => {
     //#TODO: Do complete styles for this item
-    return <StyledWrap>
-        <AvatarSide>
-            <AvatarWrap>
-            <Avatar/>
-            </AvatarWrap>
-            <p>{currentUser?.name}</p>
-            <p>{currentUser?.phone}</p>
-            <p>{currentUser?.company.name}</p>
-        </AvatarSide>
-    </StyledWrap>
+    return <Wrapper >
+        <div className="profile-side">
+            <div className="profile-side__avatar">
+                <Avatar sz={200}/>
+                <Button clickHandler={() => alert("Функция пока недоступна")}>Сменить фото</Button>
+            </div>
+        </div>
+        <div className="profile-info">
+            <form className="profile-info__form">
+                
+            </form>
+        </div>
+    </Wrapper>
 }
 
 export default UserProfile
