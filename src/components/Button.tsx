@@ -9,7 +9,7 @@ interface IButton {
 }
 const StyledButton = styled.button<IButton>`
     font-size: 1.3rem;
-    border: 1px solid grey;
+    border: 1px solid var(--theme-color-3);
     border-radius: 5px;
     background: transparent;
     padding: 15px;

@@ -14,7 +14,7 @@ const StyledAvatar = styled.div`
     }}
     border-radius: 50%;
     background-color: #fff;
-    box-shadow: 0px 0 0 5px #00b9c2;
+    box-shadow: 0px 0 0 5px var(--theme-color-2);
     margin-bottom: 10px;
     overflow: hidden;
     img{
