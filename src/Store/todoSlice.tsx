@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ITodo } from "../interfaces";
-import { fetchTodosByUserId, deleteTodo } from "./asyncActions";
+import { fetchTodosByUserId, deleteTodoAsync, toggleCompletedAsync} from "./asyncActions";
 import { isError } from "../utils";
-import { stat } from "fs";
 
 interface IState{
     todos: ITodo[];
@@ -25,9 +24,19 @@ const todoSlice = createSlice({
     name: "todos",
     initialState,
     reducers: {
-        //revoes current todo
+        //removes current todo
         removeTodo: (state, action) => {
             state.todos = state.todos.filter( item => item.id !== action.payload)
+        },
+        //changes completed status
+        toggleCompleted: (state, action:PayloadAction<number>) => {
+            state.todos = state.todos.map( item => {
+                if(item.id == action.payload){
+                    item.completed = !item.completed
+                    return item
+                }
+                return item
+            })
         },
         //sets total pages
         setPages: (state, action:PayloadAction<number>) => {
@@ -60,7 +69,10 @@ const todoSlice = createSlice({
             state.isLoading = false
         });
         //Deleting todo
-        builder.addCase(deleteTodo.fulfilled, (state, action:PayloadAction<any>) => {
+        builder.addCase(deleteTodoAsync.fulfilled, (state, action:PayloadAction<any>) => {
+            
+        })
+        builder.addCase(toggleCompletedAsync.fulfilled, (state, action:PayloadAction<any>) => {
             
         })
         //Error handling
@@ -70,5 +82,5 @@ const todoSlice = createSlice({
         })
     }
 })
-export const {removeTodo, setPages, togglePage} = todoSlice.actions;
+export const {removeTodo, setPages, togglePage, toggleCompleted} = todoSlice.actions;
 export default todoSlice.reducer;

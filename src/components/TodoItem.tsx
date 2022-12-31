@@ -4,7 +4,7 @@ import Button from "./Button"
 import { ITodo } from "../interfaces";
 import Checkbox from "./Checkbox"
 import { useAppDispatch } from "../hooks/reduxHooks";
-import { deleteTodo } from "../Store/asyncActions";
+import { deleteTodoAsync, toggleCompletedAsync } from "../Store/asyncActions";
 
 interface ITodoProps{
     todo: ITodo
@@ -38,23 +38,19 @@ const TextDone = styled.p`
 const ControlField = styled.div`
     display: flex;
 `
-const TodoItem = (props:ITodoProps) => {
-    const {todo} = props;
+//Component
+const TodoItem = ({todo}:ITodoProps) => {
+    const {id, completed} = todo;
     const dispatch = useAppDispatch()
-    const deleteItem = (id:number) => {
-        console.log(id)
-        dispatch(deleteTodo(id))
-    }
-    
     return <StyledItem>
         <CheckboxBlock>
-            <Checkbox completed={todo.completed}/>
+            <Checkbox completed={todo.completed} onChangeHandler={() => dispatch(toggleCompletedAsync({id,completed}))}/>
         </CheckboxBlock>
         <TextField>
             {todo.completed ? <TextDone>{todo.title}</TextDone> : todo.title}
         </TextField>
         <ControlField>
-            <Button danger clickHandler={() => deleteItem(todo.id) }>Удалить</Button>
+            <Button danger clickHandler={() => dispatch(deleteTodoAsync(id)) }>Удалить</Button>
             <Button success >Редактировать</Button>
         </ControlField>
     </StyledItem>

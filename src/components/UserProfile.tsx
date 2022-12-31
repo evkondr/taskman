@@ -31,7 +31,20 @@ const Wrapper = styled.section`
         border-bottom: 1px solid var(--theme-color-2);
         padding: 0.5rem 0;
         margin-bottom: 1rem;
-    } 
+    }
+    @media screen and (max-width: 768px){
+        .profile-info__group{
+            grid-template-columns: 1fr
+        }
+    }
+    @media screen and (max-width: 540px){
+        grid-template-columns: 1fr;
+        width: 100%;
+        .profile-side{
+            width: 100%;
+            justify-content: center;
+        }
+    }
 `
 interface IUserProfileProps{
     currentUser: IUser | null

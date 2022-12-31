@@ -20,5 +20,11 @@ class todosService{
         const result = instance.delete(`/${id}`)
         return result
     }
+    static async patchCompleted(id:number, completed:boolean){
+        const result = instance.patch(`/${id}`, {
+            completed
+        })
+        return result
+    }
 }
 export default todosService

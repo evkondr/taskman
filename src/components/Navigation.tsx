@@ -7,6 +7,7 @@ const StyledNav = styled.nav`
     display: flex;
     font-size: 1.5rem;
     color: #fff;
+    transition: all .2s;
     a{
         border: 1px solid #fff;
         border-radius: 3px;
@@ -17,6 +18,9 @@ const StyledNav = styled.nav`
         :hover{
             box-shadow: 0 0 10px rgba(255,255,255, .5);
         }
+    }
+    @media screen and (max-width: 768px){
+        display: none;
     }
 `
 

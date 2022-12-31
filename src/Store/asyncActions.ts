@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 import { ITodo, IUser } from "../interfaces";
 import todosService from "../services/todosSetvice";
 import userService from "../services/userService";
-import { removeTodo } from "./todoSlice";
+import { removeTodo, toggleCompleted } from "./todoSlice";
 //USERS ACTIONS
 export const fetchUsers = createAsyncThunk<IUser[]>("users/fetch", async(_, {rejectWithValue}) => {
     try {
@@ -20,7 +20,7 @@ export const fetchUsers = createAsyncThunk<IUser[]>("users/fetch", async(_, {rej
 })
 export const fetchUserById = createAsyncThunk<IUser, string>("user/fetchById", async(id, {rejectWithValue}) => {
     try {
-        const response = await userService.getUserById(id);
+        const response:any = await userService.getUserById(id);
         return response.data;
     } catch (error) {
         if(axios.isAxiosError(error)){
@@ -46,10 +46,22 @@ export const fetchTodosByUserId = createAsyncThunk<ITodo[], string>("todos/fetch
         }
     }
 })
-export const deleteTodo = createAsyncThunk<void, number>("todos/deleteTodo", async(id, {rejectWithValue, dispatch}) => {
+export const deleteTodoAsync = createAsyncThunk<void, number>("todos/deleteTodo", async(id, {rejectWithValue, dispatch}) => {
     try {
-        const response = await todosService.deleteTodo(id)
+        await todosService.deleteTodo(id)
         dispatch(removeTodo(id))
+    } catch (error) {
+        if(axios.isAxiosError(error)){
+            return rejectWithValue(error.message);
+        }else{
+            return rejectWithValue(error)
+        }
+    }
+})
+export const toggleCompletedAsync = createAsyncThunk<void, {id:number, completed:boolean}>("todos/patchCompleted", async({id,completed}, {rejectWithValue, dispatch}) => {
+    try {
+        await todosService.patchCompleted(id, completed);
+        dispatch(toggleCompleted(id))
     } catch (error) {
         if(axios.isAxiosError(error)){
             return rejectWithValue(error.message);
