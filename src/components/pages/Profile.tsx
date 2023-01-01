@@ -10,6 +10,6 @@ const Profile = () => {
     useEffect(() => {
         dispatch(fetchUserById(userID as string))
     }, [dispatch, userID])
-    return <UserProfile currentUser={currentUser}/>
+    return <UserProfile user={currentUser}/>
 }
 export default Profile;

@@ -3,6 +3,7 @@ import { IAddress, IUser } from "../interfaces";
 import Avatar from "./Avatar";
 import Button from "./Button";
 import Input from "./Input";
+
 const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -47,11 +48,11 @@ const Wrapper = styled.section`
     }
 `
 interface IUserProfileProps{
-    currentUser: IUser | null
+    user: IUser | null
 }
-const UserProfile = ({currentUser}:IUserProfileProps) => {
-    const address = currentUser?.address;
-    const company = currentUser?.company;
+const UserProfile = ({user}:IUserProfileProps) => {
+    const address = user?.address;
+    const company = user?.company;
     return <Wrapper >
         <div className="profile-side">
             <div className="profile-side__avatar">
@@ -64,7 +65,7 @@ const UserProfile = ({currentUser}:IUserProfileProps) => {
                 <div className="profile-info__group">
                     <Input id="user-name" 
                         type="text" 
-                        value={currentUser?.name || ""} 
+                        value={user?.name || ""} 
                         labelName="Имя:"
                         disabled={true}
                         error=""
@@ -72,7 +73,7 @@ const UserProfile = ({currentUser}:IUserProfileProps) => {
                     />
                     <Input id="login" 
                         type="text" 
-                        value={currentUser?.username || ""} 
+                        value={user?.username || ""} 
                         labelName="Логин:"
                         disabled={true}
                         error=""
@@ -80,7 +81,7 @@ const UserProfile = ({currentUser}:IUserProfileProps) => {
                     />
                     <Input id="email" 
                         type="email" 
-                        value={currentUser?.email || ""} 
+                        value={user?.email || ""} 
                         labelName="Почта:"
                         disabled={true}
                         error=""
@@ -88,7 +89,7 @@ const UserProfile = ({currentUser}:IUserProfileProps) => {
                     />
                     <Input id="phone" 
                         type="text" 
-                        value={currentUser?.phone || ""} 
+                        value={user?.phone || ""} 
                         labelName="Телефон:"
                         disabled={true}
                         error=""

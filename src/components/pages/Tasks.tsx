@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
-import { fetchTodosByUserId } from "../../Store/asyncActions"
+import { fetchTodosByUserId, fetchUserById } from "../../Store/asyncActions"
 import { setPages, togglePage } from "../../Store/todoSlice";
 import Preloader from "../Loader";
 import TodoItem from "../TodoItem";
@@ -18,9 +18,12 @@ const Tasks = () => {
     const paginatedTodos = pagination(todos, 5);
     //set total pages
     dispatch(setPages(paginatedTodos.length))
-    //useEffect
+    //useEffects
     useEffect(() => {
         dispatch(fetchTodosByUserId(userID as string))
+    },[dispatch, userID])
+    useEffect(() => {
+        dispatch(fetchUserById(userID as string))
     },[dispatch, userID])
     //return component
     return <Wrapper>
