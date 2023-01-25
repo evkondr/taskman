@@ -1,4 +1,4 @@
-import React from 'react';
+import "./index.css";
 import ReactDOM from 'react-dom/client';
 import store from './Store';
 import App from './App';
@@ -22,9 +22,10 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     font-size: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--theme-font);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--theme-color-3);
   }
   #root{
     width: 100vw;

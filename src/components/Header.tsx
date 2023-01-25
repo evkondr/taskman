@@ -6,7 +6,7 @@ import Container from "./Container";
 const StyledHeader = styled.header`
     position: absolute;
     width: 100%;
-    background-color: #3ea5ff;
+    background-color: var(--theme-color-1);
     padding: 10px;
 `
 

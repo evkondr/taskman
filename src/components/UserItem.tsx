@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IUser } from "../interfaces";
-import avatar from "../imgaes/Avatar.jpg"
+import Avatar from "./Avatar";
 interface IUserItem{
     user:IUser
 }
@@ -9,10 +9,10 @@ const StyledItem = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 150px;
+    border: 1px solid rgba(0,0,0, .1);
+    border-radius: 5px;
     height: 230px;
     font-size: 1.5rem;
-    border: 1px solid #3f3f3f;
     box-shadow: 1px 1px 5px rgba(0,0,0, .5);
     padding: 10px;
     margin: 15px;
@@ -21,22 +21,18 @@ const StyledItem = styled.div`
     transition: all .1s ease-in-out;
     &:hover{
         transform: scale(110%);
-        box-shadow: 15px 15px 5px rgba(0,0,0, .8);;
+        box-shadow: 10px 10px 5px rgba(0,0,0, .5);;
+    }
+    h5{
+        margin-bottom: 20px;
     }
 `
-const StyledAvatar = styled.div`
-    width: 100%;
-    height: 150px;
-    background-color: #3f3f3f;
-    background: url(${avatar}) center no-repeat;
-    background-size: cover;
-    margin-bottom: 10px;
-`
+
 const UserItem = (props:IUserItem) => {
     const {user} = props
     return <StyledItem>
-        <StyledAvatar />
-        <p>{user.name}</p>
+        <h5>{user.name}</h5>
+        <Avatar />
     </StyledItem>
 }
 export default UserItem;

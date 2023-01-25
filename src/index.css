@@ -1,0 +1,8 @@
+:root{
+    /* colors */
+    --theme-color-1: #3ea5ff;
+    --theme-color-2: #00b9c2;
+    --theme-color-3: #8c8c8c;
+    /* font */
+    --theme-font: 'Roboto', sans-serif;
+}

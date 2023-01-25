@@ -14,6 +14,7 @@ import NotFound from './components/pages/NotFound';
 import styled from "styled-components";
 import {useAppSelector, useAppDispatch} from "./hooks/reduxHooks";
 import { logout, login } from './Store/authSlice';
+import SingleUser from './components/pages/SingleUser';
 
 
 const Main = styled.main`
@@ -73,6 +74,7 @@ function App() {
                   <Route path="profile" element={<Profile />}/>
                   <Route path="users" element={<Users />}/>
                   <Route path="tasks" element={<Tasks />}/>
+                  <Route path="users/:userID" element={<SingleUser />}/>
                 </>}
               </Routes>
           </Container>
