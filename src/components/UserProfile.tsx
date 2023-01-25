@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IAddress, IUser } from "../interfaces";
+import { IUser } from "../interfaces";
 import Avatar from "./Avatar";
 import Button from "./Button";
 import Input from "./Input";

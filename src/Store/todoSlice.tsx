@@ -24,20 +24,6 @@ const todoSlice = createSlice({
     name: "todos",
     initialState,
     reducers: {
-        //removes current todo
-        removeTodo: (state, action) => {
-            state.todos = state.todos.filter( item => item.id !== action.payload)
-        },
-        //changes completed status
-        toggleCompleted: (state, action:PayloadAction<number>) => {
-            state.todos = state.todos.map( item => {
-                if(item.id == action.payload){
-                    item.completed = !item.completed
-                    return item
-                }
-                return item
-            })
-        },
         //sets total pages
         setPages: (state, action:PayloadAction<number>) => {
             state.pages = action.payload
@@ -69,11 +55,17 @@ const todoSlice = createSlice({
             state.isLoading = false
         });
         //Deleting todo
-        builder.addCase(deleteTodoAsync.fulfilled, (state, action:PayloadAction<any>) => {
-            
+        builder.addCase(deleteTodoAsync.fulfilled, (state, action:PayloadAction<number>) => {
+            state.todos = state.todos.filter( item => item.id !== action.payload)
         })
-        builder.addCase(toggleCompletedAsync.fulfilled, (state, action:PayloadAction<any>) => {
-            
+        builder.addCase(toggleCompletedAsync.fulfilled, (state, action:PayloadAction<number>) => {
+            state.todos = state.todos.map( item => {
+                if(item.id === action.payload){
+                    item.completed = !item.completed
+                    return item
+                }
+                return item
+            })
         })
         //Error handling
         builder.addMatcher(isError, (state, action:PayloadAction<string>)=>{
@@ -82,5 +74,5 @@ const todoSlice = createSlice({
         })
     }
 })
-export const {removeTodo, setPages, togglePage, toggleCompleted} = todoSlice.actions;
+export const {setPages, togglePage} = todoSlice.actions;
 export default todoSlice.reducer;

@@ -15,6 +15,7 @@ const StyledPage = styled.div`
 const Users = () => {
     const {users, isLoading,  error} = useAppSelector(state => state.usersList)
     const dispatch = useAppDispatch()
+    console.log(error)
     useEffect(()=>{
         dispatch(fetchUsers())
     }, [dispatch])
